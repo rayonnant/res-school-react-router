@@ -1,0 +1,28 @@
+.nav {
+  width: 100%;
+  background-color: lightblue;
+  margin-top: 20px;
+
+  &__list {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__item {
+    font-size: 2rem;
+    border: 1px #000000 solid;
+    display: inline-block;
+    margin-right: 80px;
+
+    &--first {
+      margin-right: auto;
+    }
+
+    &--last {
+      margin-right: 0;
+    }
+
+  }
+}
