@@ -1,14 +1,36 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import Planet from '../../assets/planet.png'
+import They from '../../assets/they.png'
 import styles from './style.module.scss'
-import Layout from '../../components/layout'
 
+export const HomePage: React.FC = (): React.JSX.Element => {
+    const [opacity, setOpacity] = React.useState<number>(0)
 
-const HomePage: React.FC = (): React.JSX.Element => {
+    useEffect((): () => void => {
+        if (opacity === 1) {
+            setOpacity(0)
+        } else {
+            setOpacity(1)
+        }
+
+        return () => {
+            setOpacity(0)
+        }
+    }, [])
+
     return (
-        <>
-            <h1 className={styles.div}>Вселенная Рика и Морти</h1>
-        </>
+        <div className={styles.container} style={{opacity: `${opacity}`}}>
+            <img src={Planet} alt="decoration"
+                 className={`${styles.img} ${styles['img--planet']}`}
+                 />
+            <img src={They} alt="decoration"
+                 className={`${styles.img} ${styles['img--they']}`}
+                />
+            <Link to="/category/characters" className={styles.title}>
+                <span className={styles.title__main}>welcome</span>
+                <span className={styles.title__sub}>wubba lubba dub dub!</span>
+            </Link>
+        </div>
     )
 }
-
-export default HomePage

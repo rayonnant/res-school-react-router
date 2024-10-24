@@ -1,22 +1,22 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom'
-import HomePage from './pages/home'
-import NotFoundPage from './pages/notFound'
-import CategoryPage from './pages/category'
-import ElementPage from './pages/element'
-import Layout from './components/layout'
+import {Navigate, Route, Routes} from 'react-router-dom'
+import {Layout} from './components/layout'
+import {HomePage} from './pages/home'
+import {NotFoundPage} from './pages/notFound'
+import {CategoryPage} from './pages/category'
+import {ElementPage} from './pages/element'
 
-function App(): React.JSX.Element {
+export const App: React.FC = (): React.JSX.Element => {
     return (
-        <Layout>
-            <Routes>
-                <Route path="/" element={<HomePage/>}/>
+        <Routes>
+            <Route path="/" element={<Layout/>}>
+                <Route index element={<HomePage/>}/>
                 <Route path="/category/:type" element={<CategoryPage/>}/>
                 <Route path="/category/:type/:id" element={<ElementPage/>}/>
-                <Route path="*" element={<NotFoundPage/>}/>
-            </Routes>
-        </Layout>
+                <Route path="/not-found" element={<NotFoundPage/>}/>
+                <Route path="*" element={<Navigate to="/not-found" replace/>}/>
+            </Route>
+        </Routes>
     )
 }
 
-export default App

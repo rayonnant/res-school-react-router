@@ -1,89 +1,83 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styles from './style.module.scss'
-import {useParams} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import charactersData from '../../shared/characters.json'
 import episodesData from '../../shared/episodes.json'
 import locationsData from '../../shared/locations.json'
-import Character from '../../components/character'
-import Episode from '../../components/episode'
-import Location from '../../components/location'
 
-interface ICharacter {
+interface BaseInfo {
     id: number
     name: string
+    created: string
+}
+
+interface Character extends BaseInfo {
     status: string
     species: string
     type: string
     gender: string
     image: string
-    created: string
 }
 
-interface IEpisode {
-    id: number
-    name: string
+interface Episode extends BaseInfo {
     air_date: string
     episode: string
-    created: string
 }
 
-interface ILocation {
-    id: number
-    name: string
+interface Location extends BaseInfo {
     type: string
     dimension: string
-    created: string
 }
 
-const CategoryPage: React.FC = (): React.JSX.Element => {
+export const CategoryPage: React.FC = (): React.JSX.Element => {
     const {type} = useParams()
-    console.log(type)
+    const navigate = useNavigate()
+
+    useEffect((): void => {
+        if (type) {
+            if (!['characters', 'episodes', 'locations'].includes(type)) {
+                navigate('*')
+            }
+        }
+    }, [type, navigate])
+
+
+    const listArr = (data: Character[] | Episode[] | Location[]) => {
+        return data.map((item: Character | Episode | Location, idx: number) => (
+            <li
+                className={styles.item}
+                key={idx}
+                onClick={(): void => {
+                    if (type != null && ['characters', 'episodes', 'locations'].includes(type)) {
+                        navigate(`/category/${type}/${idx + 1}`)
+                    }
+                }
+                }
+            >
+                <span className={styles.item__number}>{idx + 1}</span>
+                <span className={styles.item__text}>{item.name}</span>
+            </li>
+        ))
+    }
+
+    const getData = (type: string = '') => {
+        switch (type) {
+            case 'characters':
+                return charactersData
+            case 'episodes':
+                return episodesData
+            case 'locations':
+                return locationsData
+            default:
+                return []
+        }
+    }
 
     return (
-        <div>
-            <h2>
-                Список элементов из данной категории.
-                При нажатии на элемент, открывается детальная информация об элементе.
-            </h2>
-            {type === 'characters' ?
-                charactersData.map((character: ICharacter, idx: number): React.ReactElement => (
-                    <Character
-                        key={idx}
-                        id={character.id}
-                        name={character.name}
-                        status={character.status}
-                        species={character.species}
-                        type={character.type}
-                        gender={character.gender}
-                        image={character.image}
-                        created={character.created}
-                    />
-                )) :
-                type === 'episodes' ?
-                    episodesData.map((episode: IEpisode, idx: number): React.ReactElement => (
-                        <Episode
-                            key={idx}
-                            id={episode.id}
-                            name={episode.name}
-                            air_date={episode.air_date}
-                            episode={episode.episode}
-                            created={episode.created}
-                        />
-                    )) :
-                    type === 'locations' ?
-                        locationsData.map((location: ILocation, idx: number): React.ReactElement => (
-                            <Location
-                            key={idx}
-                            id={idx}
-                            name={location.name}
-                            type={location.type}
-                            dimension={location.dimension}
-                            created={location.created}
-                            />
-                        ))
-                : null}
-        </div>
+        <ul className={styles.container}>
+            {
+                type && listArr(getData(type))
+            }
+        </ul>
     )
 }
-
-export default CategoryPage

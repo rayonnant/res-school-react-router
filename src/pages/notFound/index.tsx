@@ -1,13 +1,10 @@
 import React from 'react'
 import styles from './style.module.scss'
 
-
-const NotFoundPage: React.FC = (): React.JSX.Element => {
+export const NotFoundPage: React.FC = (): React.JSX.Element => {
     return (
-        <>
-            <h2>Page is not found</h2>
-        </>
+        <div className={styles['not-found-page']}>
+            <h2 className={styles['not-found-page__title']}>Page is not found!</h2>
+        </div>
     )
 }
-
-export default NotFoundPage

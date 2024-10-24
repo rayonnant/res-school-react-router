@@ -1,14 +1,18 @@
 import React from 'react'
-import MainNav from '../mainNav'
+import {Outlet} from 'react-router-dom'
+import {Header} from '../header'
 import styles from './style.module.scss'
 
-const Layout = ({ children }: {children: React.ReactNode}): React.JSX.Element  => {
+export const Layout: React.FC = (): React.JSX.Element => {
     return (
-        <div className={styles.layout}>
-            <MainNav/>
-            {children}
-        </div>
+        <>
+            <Header/>
+            <div className={styles.layout}>
+                <Outlet/>
+            </div>
+        </>
+
     )
 }
 
-export default Layout
+
