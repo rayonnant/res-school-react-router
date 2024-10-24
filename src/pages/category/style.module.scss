@@ -1,0 +1,35 @@
+.container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.item {
+  width: 70%;
+  border-top: 1px solid black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 1.5rem;
+  font-weight: lighter;
+
+  &:hover * {
+    color: #787878;
+    transition: 0.3s;
+  }
+
+  &__number {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    font-weight: normal;
+  }
+}
