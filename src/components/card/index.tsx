@@ -45,7 +45,7 @@ export const Card: React.FC<Props> = (props: Props): React.JSX.Element => {
             setOpacity(1)
         }
 
-        return () => {
+        return (): void => {
             setOpacity(0)
         }
     }, [])

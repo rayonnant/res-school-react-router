@@ -1,0 +1,23 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 3rem;
+
+  & * {
+    opacity: 1;
+    transition: 0.3s;
+  }
+
+  &:hover * {
+    transition: 0.3s;
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 380px) {
+  .login {
+    margin-left: 1rem;
+  }
+}
