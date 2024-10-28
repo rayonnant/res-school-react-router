@@ -14,7 +14,7 @@ export const HomePage: React.FC = (): React.JSX.Element => {
             setOpacity(1)
         }
 
-        return () => {
+        return (): void => {
             setOpacity(0)
         }
     }, [])

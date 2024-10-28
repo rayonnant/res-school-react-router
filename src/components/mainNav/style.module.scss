@@ -52,3 +52,15 @@
     }
   }
 }
+
+@media (max-width: 380px) {
+  .nav {
+    &__item {
+      margin-right: 2rem;
+
+      &--last {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  height: calc(100vh - 4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+@media (max-width: 1090px) {
+  .container {
+    height: calc(100vh - 8rem);
+  }
+}
+
+@media (max-height: 780px) {
+  .container {
+    margin-top: 2rem;
+    height: auto;
+  }
+}
