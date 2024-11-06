@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Navigate, useNavigate, useParams} from 'react-router-dom'
-import charactersData from '../../shared/characters.json'
-import episodesData from '../../shared/episodes.json'
-import locationsData from '../../shared/locations.json'
 import {Card} from '../../components/card'
+import axios from 'axios'
+import {Character, Episode, Location} from '../../interfaces'
 
 export const ElementPage: React.FC = (): React.JSX.Element => {
 
     const {type, id} = useParams()
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [error, setError] = useState<boolean>(false)
 
     useEffect((): void => {
         if (type) {
@@ -18,30 +19,41 @@ export const ElementPage: React.FC = (): React.JSX.Element => {
         }
     }, [type, navigate])
 
-    const getData = (type: string = '') => {
-        switch (type) {
-            case 'characters':
-                return charactersData
-            case 'episodes':
-                return episodesData
-            case 'locations':
-                return locationsData
-            default:
-                return []
-        }
-    }
+    const [entities, setEntities] = useState<Character | Location | Episode | undefined>()
 
-    if (type && id) {
+    useEffect((): void => {
+        setIsLoading(true)
+        if (type && id) {
+            axios(
+                {
+                    method: 'GET',
+                    url: `https://rickandmortyapi.com/api/${type.slice(0, type.length-1)}/${id}`
+                }
+            ).then((res): void => {
+                setError(false)
+                setIsLoading(false)
+                setEntities(res.data)
+            }).catch((): void => {
+                setIsLoading(false)
+                setError(true)
+            })
+        }
+    }, [])
+
+
+    if (type && id && !error) {
         if (
             ['characters', 'episodes', 'locations'].includes(type)
             &&
             (typeof +id === 'number' && !isNaN(+id) && Number.isFinite(+id))
         ) {
+
             return (
-                <Card
-                    data={getData(type)}
-                    id={+id}
-                />
+                    <Card
+                        data={entities}
+                        id={+id}
+                        isLoading={isLoading}
+                    />
             )
         }
     }

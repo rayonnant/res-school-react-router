@@ -1,13 +1,9 @@
 import React from 'react'
 import {Navigate, useLocation, useNavigate} from 'react-router-dom'
-import {AuthContextValues, useAuth} from '../../contexts/AuthProvider'
+import {useAuth} from '../../contexts/AuthProvider'
 import {SignIn} from '../../components/signInForm'
 import styles from './style.module.scss'
-
-interface SignInProps {
-    email: string
-    password: string
-}
+import {AuthContextValues, User} from '../../interfaces'
 
 export const Login: React.FC = (): React.JSX.Element => {
 
@@ -17,9 +13,9 @@ export const Login: React.FC = (): React.JSX.Element => {
 
     const from = location.state?.from || '/'
 
-    const handleSignIn = (data: SignInProps): void => {
+    const handleSignIn = (data: User): void => {
         if (auth) {
-            auth.signIn(data, () => {
+            auth.signIn(data, (): void => {
                 navigate(from, {
                     replace: true
                 })

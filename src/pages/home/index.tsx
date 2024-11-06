@@ -7,15 +7,11 @@ import styles from './style.module.scss'
 export const HomePage: React.FC = (): React.JSX.Element => {
     const [opacity, setOpacity] = React.useState<number>(0)
 
-    useEffect((): () => void => {
+    useEffect(() => {
         if (opacity === 1) {
             setOpacity(0)
         } else {
             setOpacity(1)
-        }
-
-        return (): void => {
-            setOpacity(0)
         }
     }, [])
 

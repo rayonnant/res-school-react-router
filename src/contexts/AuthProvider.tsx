@@ -1,16 +1,5 @@
 import React, {createContext, useContext, useState} from 'react'
-
-interface User {
-    email: string
-    password: string
-}
-
-export interface AuthContextValues {
-    user: User | null
-    signIn: (newUser: User, callback: (user: User | null) => void) => void
-    signOut: (callback: (user: User | null) => void) => void
-}
-
+import {AuthContextValues, User} from '../interfaces'
 
 const AuthContext = createContext<AuthContextValues | null>(null)
 
