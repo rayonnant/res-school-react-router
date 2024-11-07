@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './style.module.scss'
 import {Character, Location, Episode} from '../../interfaces'
 
@@ -11,12 +11,12 @@ interface Props {
 export const Card: React.FC<Props> = (props: Props): React.JSX.Element => {
     const [opacity, setOpacity] = React.useState<number>(0)
 
-    useEffect((): void => {
-        if (opacity === 1) {
-            setOpacity(0)
-        } else {
+    useEffect((): () => void => {
+        const timeoutId = setTimeout((): void => {
             setOpacity(1)
-        }
+        }, 100)
+
+        return (): void => clearTimeout(timeoutId)
     }, [])
 
     return (

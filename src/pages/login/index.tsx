@@ -4,8 +4,9 @@ import {useAuth} from '../../contexts/AuthProvider'
 import {SignIn} from '../../components/signInForm'
 import styles from './style.module.scss'
 import {AuthContextValues, User} from '../../interfaces'
+import ErrorBoundary from '../../components/errorBoundary'
 
-export const Login: React.FC = (): React.JSX.Element => {
+const Login: React.FC = (): React.JSX.Element => {
 
     const auth: AuthContextValues | null = useAuth()
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ export const Login: React.FC = (): React.JSX.Element => {
                     replace: true
                 })
             })
-            console.log('SignIn data: ', data)
+            // console.log('SignIn data: ', data)
         }
     }
 
@@ -35,7 +36,11 @@ export const Login: React.FC = (): React.JSX.Element => {
 
     return (
         <div className={styles.container}>
-            <SignIn onSubmit={handleSignIn}/>
+            <ErrorBoundary>
+                <SignIn onSubmit={handleSignIn}/>
+            </ErrorBoundary>
         </div>
     )
 }
+
+export default Login

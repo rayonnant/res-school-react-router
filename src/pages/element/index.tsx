@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import {Navigate, useNavigate, useParams} from 'react-router-dom'
-import {Card} from '../../components/card'
 import axios from 'axios'
+import ErrorBoundary from '../../components/errorBoundary'
+import {Card} from '../../components/card'
 import {Character, Episode, Location} from '../../interfaces'
 
-export const ElementPage: React.FC = (): React.JSX.Element => {
+const ElementPage: React.FC = (): React.JSX.Element => {
 
     const {type, id} = useParams()
     const navigate = useNavigate()
@@ -49,14 +50,18 @@ export const ElementPage: React.FC = (): React.JSX.Element => {
         ) {
 
             return (
+                <ErrorBoundary>
                     <Card
                         data={entities}
                         id={+id}
                         isLoading={isLoading}
                     />
+                </ErrorBoundary>
             )
         }
     }
 
     return <Navigate to="*"/>
 }
+
+export default ElementPage
