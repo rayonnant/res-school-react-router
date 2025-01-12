@@ -104,8 +104,6 @@ const CategoryPage: React.FC = (): React.JSX.Element => {
                     })
                 }
                 {isLoading && !error && <li className={styles.item}>Loading...</li>}
-                {/*{error && <li className={styles.item}>Error</li>}*/}
-
             </ul>
         </ErrorBoundary>
     )

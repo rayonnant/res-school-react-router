@@ -108,8 +108,8 @@ export const CustomInput = ({
                                 width: widthSizes[size]
                             }}
                         >
-                            <legend>{radioInputs.legend} {withAsterisk &&
-															<sup style={{color: 'darkred'}}>*</sup>}</legend>
+                            <legend>{radioInputs.legend} {withAsterisk && <sup style={{color: 'darkred'}}>*</sup>}
+                            </legend>
                             <div>
                                 {
                                     radioInputs.children.map((item: {
@@ -119,7 +119,7 @@ export const CustomInput = ({
                                         <label className={styles['radio-label']} key={idx}>
                                             <input
                                                 className={styles.input}
-                                                type='radio'
+                                                type="radio"
                                                 name={radioInputs.name}
                                                 value={item.value}
                                                 required={idx === 0}
