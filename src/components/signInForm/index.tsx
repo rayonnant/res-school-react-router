@@ -1,18 +1,10 @@
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import {IconAt, IconPassword} from '@tabler/icons-react'
 import {CustomInput} from '../customInput'
 import styles from './style.module.scss'
+import {OnSubmit} from '../../interfaces'
 
-interface SubmitProps {
-    email: string
-    password: string
-}
-
-interface Props {
-    onSubmit: ({ email, password }: SubmitProps) => void
-}
-
-export const SignIn: React.FC<Props> = ({onSubmit}): React.JSX.Element => {
+export const SignIn: React.FC<OnSubmit> = ({onSubmit}: OnSubmit): React.JSX.Element => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
@@ -29,14 +21,14 @@ export const SignIn: React.FC<Props> = ({onSubmit}): React.JSX.Element => {
                 label='Email'
                 placeholder='email address'
                 icon={<IconAt size="0.7em"/>}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void => setEmail(e.target.value)}
             />
             <CustomInput
                 type='password'
                 label='Password'
                 placeholder='your password'
                 icon={<IconPassword size="0.7em"/>}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>): void => setPassword(e.target.value)}
             />
             <button type="submit" className={styles.form__btn}>Enter</button>
         </form>

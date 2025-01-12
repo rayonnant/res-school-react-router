@@ -1,15 +1,12 @@
 import React from 'react'
 import {Navigate, useLocation, useNavigate} from 'react-router-dom'
-import {AuthContextValues, useAuth} from '../../contexts/AuthProvider'
+import {useAuth} from '../../contexts/AuthProvider'
 import {SignIn} from '../../components/signInForm'
 import styles from './style.module.scss'
+import {AuthContextValues, User} from '../../interfaces'
+import ErrorBoundary from '../../components/errorBoundary'
 
-interface SignInProps {
-    email: string
-    password: string
-}
-
-export const Login: React.FC = (): React.JSX.Element => {
+const Login: React.FC = (): React.JSX.Element => {
 
     const auth: AuthContextValues | null = useAuth()
     const navigate = useNavigate()
@@ -17,14 +14,14 @@ export const Login: React.FC = (): React.JSX.Element => {
 
     const from = location.state?.from || '/'
 
-    const handleSignIn = (data: SignInProps): void => {
+    const handleSignIn = (data: User): void => {
         if (auth) {
-            auth.signIn(data, () => {
+            auth.signIn(data, (): void => {
                 navigate(from, {
                     replace: true
                 })
             })
-            console.log('SignIn data: ', data)
+            // console.log('SignIn data: ', data)
         }
     }
 
@@ -39,7 +36,11 @@ export const Login: React.FC = (): React.JSX.Element => {
 
     return (
         <div className={styles.container}>
-            <SignIn onSubmit={handleSignIn}/>
+            <ErrorBoundary>
+                <SignIn onSubmit={handleSignIn}/>
+            </ErrorBoundary>
         </div>
     )
 }
+
+export default Login

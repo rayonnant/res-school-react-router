@@ -10,7 +10,7 @@
   &__title {
     display: inline-block;
     font-size: 4rem;
-    text-shadow: 2px 2px white, 3px 3px rgba(37, 37, 37, 0.52);
+    text-shadow: 2px 2px white, 3px 3px var(--black);
     color: lightgrey;
   }
 }

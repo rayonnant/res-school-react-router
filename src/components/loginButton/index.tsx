@@ -1,23 +1,24 @@
+import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useAuth} from '../../contexts/AuthProvider'
 import {IconLogin, IconLogout} from '@tabler/icons-react'
 import styles from './style.module.scss'
 
-export const LoginButton = () => {
+export const LoginButton: React.FC = (): React.JSX.Element => {
 
     const auth = useAuth()
     const navigate = useNavigate()
 
-    const handleSignOut = () => {
+    const handleSignOut = (): void => {
         if (auth) {
-            auth.signOut(() => {
+            auth.signOut((): void => {
                 navigate('/')
             })
         }
 
     }
 
-    const handleSignIn = () => {
+    const handleSignIn = (): void => {
         navigate('/login')
     }
 
