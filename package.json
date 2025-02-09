@@ -23,7 +23,10 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prettier:check": "prettier --config ./.prettierrc.json --check './**/*.{ts,tsx,js,json,html,md,yml}'",
+    "prettier:fix": "prettier --config ./.prettierrc.json --write './**/*.{ts,tsx,js,json,html,md,yml}'",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +49,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@babel/plugin-transform-private-property-in-object": "7.25.9",
+    "husky": "9.1.7",
+    "prettier": "3.5.0",
     "sass": "1.79.4"
   }
 }

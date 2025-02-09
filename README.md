@@ -8,19 +8,23 @@ To set up an environment, run the following command first:
 npm install
 # This will install all the necessary dependencies.
 ```
+
 ### Development Environment
+
 To start the application in the development environment, run:
+
 ```bash
 npm run start
 # This command will start the development server.
 ```
 
 ### Production Environment
+
 To start the application in the production environment, follow these steps:
+
 ```bash
 npm run build
 # Wait for the build process to complete.
 serve -s build
 # This will serve the built application.
 ```
-
