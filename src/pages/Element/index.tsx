@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import ErrorBoundary from '../../components/errorBoundary'
-import { Card } from '../../components/card'
+import { ErrorBoundary } from '../../components'
+import { Card } from '../../components'
 import { Character, Episode, Location } from '../../interfaces'
 
 const ElementPage: FC = () => {

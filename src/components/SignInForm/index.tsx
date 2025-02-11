@@ -1,10 +1,10 @@
 import React, { FC, ChangeEvent, useState } from 'react'
 import { IconAt, IconPassword } from '@tabler/icons-react'
-import { CustomInput } from '../customInput'
+import { CustomInput } from '../index'
 import styles from './style.module.scss'
 import { OnSubmit } from '../../interfaces'
 
-export const SignIn: FC<OnSubmit> = ({ onSubmit }: OnSubmit) => {
+export const SignInForm: FC<OnSubmit> = ({ onSubmit }: OnSubmit) => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 

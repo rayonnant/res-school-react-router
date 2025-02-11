@@ -1,14 +1,14 @@
 import React, { lazy, FC } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Layout } from './components/layout'
-import { AuthProvider } from './contexts/AuthProvider'
-import { PrivateRoute } from './components/privateRoute'
+import { Layout } from './components'
+import { AuthProvider } from './contexts'
+import { PrivateRoute } from './components'
 
-const Home = lazy(() => import('./pages/home'))
-const Login = lazy(() => import('./pages/login'))
-const Category = lazy(() => import('./pages/category'))
-const Element = lazy(() => import('./pages/element'))
-const NotFound = lazy(() => import('./pages/notFound'))
+const Home = lazy(() => import('./pages/Home'))
+const Login = lazy(() => import('./pages/Login'))
+const Category = lazy(() => import('./pages/Category'))
+const Element = lazy(() => import('./pages/Element'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 export const App: FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
-import { LoginButton } from '../loginButton'
+import { LoginButton } from '../index'
 import styles from './style.module.scss'
 
 export const MainNav: FC = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios, { Canceler } from 'axios'
-import { Character, Location, Episode } from '../interfaces'
+import { Character, Location, Episode } from '../../interfaces'
 
 export const useGetInfo = (query: string = 'character', pageNumber: number = 0) => {
   const [isLoading, setIsLoading] = useState<boolean>(true)

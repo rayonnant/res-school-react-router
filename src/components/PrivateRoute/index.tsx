@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthProvider'
+import { useAuth } from '../../contexts'
 import { AuthContextValues } from '../../interfaces'
 
 export const PrivateRoute = ({ children }: { children: React.JSX.Element }): React.JSX.Element => {

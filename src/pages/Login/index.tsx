@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthProvider'
-import { SignIn } from '../../components/signInForm'
+import { useAuth } from '../../contexts'
+import { SignInForm } from '../../components'
 import styles from './style.module.scss'
 import { AuthContextValues, User } from '../../interfaces'
-import ErrorBoundary from '../../components/errorBoundary'
+import { ErrorBoundary } from '../../components'
 
 const Login: FC = () => {
   const auth: AuthContextValues | null = useAuth()
@@ -39,7 +39,7 @@ const Login: FC = () => {
   return (
     <div className={styles.container}>
       <ErrorBoundary>
-        <SignIn onSubmit={handleSignIn} />
+        <SignInForm onSubmit={handleSignIn} />
       </ErrorBoundary>
     </div>
   )

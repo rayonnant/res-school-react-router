@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState, useRef, useCallback } from 'react'
 import styles from './style.module.scss'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useGetInfo } from '../../hooks/useGetInfo'
+import { useGetInfo } from '../../hooks'
 import { Character, Episode, Location } from '../../interfaces'
-import ErrorBoundary from '../../components/errorBoundary'
+import { ErrorBoundary } from '../../components'
 
 const CategoryPage: FC = () => {
   const { type } = useParams()

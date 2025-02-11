@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import { AuthContextValues, User } from '../interfaces'
+import { AuthContextValues, User } from '../../interfaces'
 
 const AuthContext = createContext<AuthContextValues | null>(null)
 

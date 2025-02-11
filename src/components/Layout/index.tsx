@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Header } from '../header'
+import { Header } from '../index'
 import styles from './style.module.scss'
 
 export const Layout: FC = () => {
