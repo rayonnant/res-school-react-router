@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "res-school-react-router",
+  "short_name": "Vite App",
+  "name": "Rick and Morty",
   "icons": [
     {
       "src": "favicon.ico",
