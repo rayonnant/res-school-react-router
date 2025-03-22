@@ -1,6 +1,6 @@
 # Rick & Morty
 
-This project is a Vite application that uses React Router for client-side routing, an infinite scroll feature to dynamically display data fetched from a server, suspense, lazy loading and error boundaries.
+This project is a PWA Vite application that uses React Router for client-side routing, an infinite scroll feature to dynamically display data fetched from a server, suspense, lazy loading and error boundaries.
 
 To set up an environment, run the following command first:
 
